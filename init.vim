@@ -10,6 +10,12 @@ augroup vimrc
 augroup END
 
 
+" Leader mapping ------ {{{
+nnoremap <SPACE> <Nop>
+let mapleader = " "
+" }}}
+
+
 " Telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -21,9 +27,11 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 
 " NERDTree
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-nnoremap <leader>n :NERDTreeToggle<CR>
+Plug 'preservim/nerdtree'
+nnoremap <C-p> :NERDTreeToggle<cr>
 nnoremap <leader>nf :NERDTreeFind<CR>
+" NERDTree related
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 
 " undo tree
@@ -35,6 +43,7 @@ nnoremap <F5> :UndotreeToggle<CR>
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 
+
 " Formatting 
 Plug 'sbdchd/neoformat'
 autocmd vimrc BufWritePre * undojoin | Neoformat
@@ -43,15 +52,16 @@ autocmd vimrc BufWritePre * undojoin | Neoformat
 " One to rule them all, one to find them, one to bring them all and in the darkness bind them.
 " Plug 'sheerun/vim-polyglot'
 
-
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'valloric/youcompleteme'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'easymotion/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'RRethy/vim-illuminate'
-Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
-Plug 'tpope/vim-fugitive'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'sickill/vim-pasta'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
@@ -71,6 +81,7 @@ call plug#end()
 " Colorscheme
 colorscheme onedark
 
+
 " Vim settings
 set exrc                                    " Use local .vimrc if exists
 set relativenumber                          " Relative numbers
@@ -89,16 +100,10 @@ set undofile                                " Use undo files for undo history
 set undodir=~/.vim/undodir                  " Undo file directory
 set termguicolors                           " Use terminal colors
 set scrolloff=8                             " Number of lines to show around the cursor
-set completeopt=menuone,noinsert,noselect   " Popup menu for insert mode compeltion
+set completeopt=menuone,noinsert,noselect   " Popup menu for insert mode completion
 set signcolumn=yes                          " Extra gutter for stuff
 set cursorline                              " Highlight current cursor line
 set wildmenu                                " Command line completion shows a list of matches
-
-
-" Leader mapping ------ {{{
-nnoremap <SPACE> <Nop>
-let mapleader = " "
-" }}}
 
 
 "Custom Mappings ------ {{{
@@ -106,7 +111,15 @@ inoremap jj <ESC>
 nnoremap <leader>w :write<cr>
 nnoremap <leader>s :update<cr>
 nnoremap <leader>q :quit<cr>
-nnoremap <C-n> :nohl<cr>
+nnoremap <C-N> :nohl<cr>
+nnoremap J +
+nnoremap K -
+" }}}
+
+
+" Tabs ------ {{{
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
 " }}}
 
 
@@ -115,7 +128,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
 set splitbelow
 set splitright
 " }}}
@@ -130,8 +142,8 @@ autocmd vimrc BufLeave * silent! :wa"
 
 
 " Search ------ {{{
-nnoremap / /\v
-vnoremap / /\v
+" nnoremap / /\v
+" vnoremap / /\v
 " set gdefault                          " Adds g at the end of substitutions by default
 set hlsearch                          " Highlight searches
 set ignorecase                        " Ignore case of searches
@@ -162,4 +174,3 @@ augroup LSP
     autocmd!
     autocmd FileType rust,ruby,go call SetLSPShortcuts()
 augroup END
-
