@@ -266,6 +266,6 @@ augroup end
 augroup autosave
     autocmd!
     " Autosave buffers before leaving them
-    autocmd vimrc BufLeave * silent! :wa"
+    autocmd BufLeave * silent! :wa"
 augroup end
 
