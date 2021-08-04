@@ -13,15 +13,17 @@ let mapleader = " "
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
+" Mappings
+nnoremap <C-p> <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep({})<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 " NERDTree
 Plug 'preservim/nerdtree'
-nnoremap <C-p> :NERDTreeToggle<cr>
-nnoremap <leader>nf :NERDTreeFind<CR>
+nnoremap <leader><C-p> :NERDTreeToggle<cr>
 let NERDTreeShowHidden=1
 " NERDTree related
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -42,7 +44,6 @@ augroup end
 
 " TreeSitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
@@ -74,6 +75,17 @@ Plug 'hrsh7th/nvim-compe'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 call plug#end()
+
+" Telescope settings
+lua << EOF
+require('telescope').setup{
+    defaults = {
+        prompt_prefix = "🔍 ", 
+        file_ignore_patterns = { "node_modules", ".git" }    
+    }
+}
+EOF
+
 
 " Language servers
 lua << EOF
@@ -125,6 +137,8 @@ end
 EOF
 
 " Compe
+set completeopt=menuone,noselect            " Popup menu for insert mode completion
+
 let g:compe = {}
 let g:compe.enabled = v:true
 let g:compe.autocomplete = v:true
@@ -149,11 +163,11 @@ let g:compe.source.nvim_lua = v:true
 let g:compe.source.vsnip = v:true
 let g:compe.source.emoji = v:true
 
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+inoremap <silent><expr> <Tab> compe#complete()
+inoremap <silent><expr> <CR> compe#confirm('<CR>')
+inoremap <silent><expr> <C-e> compe#close('<C-e>')
+inoremap <silent><expr> <C-f> compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d> compe#scroll({ 'delta': -4 })
 
 " Vimsnip
 " Expand
@@ -186,7 +200,6 @@ let g:vsnip_filetypes.typescriptreact = ['typescript']
 " Colorscheme
 colorscheme onedark
 
-
 " Vim settings
 set exrc                                    " Use local .vimrc if exists
 set relativenumber                          " Relative numbers
@@ -194,6 +207,7 @@ set number                                  " Current line number
 set hidden                                  " Dont unload buffer  
 set noerrorbells                            " Do not ring bell for error messages 
 set tabstop=4                               " Tabs
+set formatoptions-=ro                       " Do not insert comment character after <cr>
 set softtabstop=4                           
 set shiftwidth=4                                
 set expandtab
@@ -203,11 +217,9 @@ set noswapfile                              " Dont use .swap files
 set nobackup                                " Dont keep backup after owerwritin file
 set termguicolors                           " Use terminal colors
 set scrolloff=10                            " Number of lines to show around the cursor
-set completeopt=menuone,noselect            " Popup menu for insert mode completion
 set signcolumn=yes                          " Extra gutter for stuff
 set cursorline                              " Highlight current cursor line
 set wildmenu                                " Command line completion shows a list of matches
-
 
 "Custom Mappings ------ {{{
 inoremap jj <ESC>
@@ -216,6 +228,31 @@ nnoremap <leader>s :update<cr>
 nnoremap <leader>q :quit<cr>
 " }}}
 
+" Behave vim
+nnoremap Y y$
+
+" Keeping it centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+" Undo breakpoints
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+
+" Best remap ever
+vnoremap J :m '>+1'<cr>gv=gv
+vnoremap K :m '<-2'<cr>gv=gv
+inoremap <C-j> <esc>:m .+1<cr>==i
+inoremap <C-k> <esc>:m .-2<cr>==i
+nnoremap <leader>j :m .+1<cr>==
+nnoremap <leader>k :m .-2<cr>==
+
+" Add blank lines
+nnoremap <leader>o mzo<esc>`z
+nnoremap <leader>O mzO<esc>`z
 
 " Search ------ {{{
 nnoremap <C-n> :nohl<cr>
