@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 
-pushd $HOME/.dotfiles
-for folder in 'nvim' 'zsh'
+pushd $HOME/nvim
+for folder in 'nvim'
 do
     echo "Removing $folder"
     stow -D $folder
