@@ -1,6 +1,6 @@
 
 "----------------------------------------------------------------------------------------
-" General      
+" General
 "----------------------------------------------------------------------------------------
 
 " map leader
@@ -13,9 +13,9 @@ inoremap jj <ESC>
 nnoremap <leader>v <C-w>v
 nnoremap <leader>s <C-w>s
 
-" Map clipboard to paste 
+" Map clipboard to paste
 vnoremap <leader>c "*y
-" Map clipboard to paste 
+" Map clipboard to paste
 vnoremap <leader>v "*p
 
 " Map show undo tree
@@ -54,7 +54,7 @@ nnoremap <S-l> :wincmd l<CR>
 
 
 "----------------------------------------------------------------------------------------
-" NERDTree      
+" NERDTree
 "----------------------------------------------------------------------------------------
 
 noremap <silent> <C-b> :NERDTreeToggle<CR>
@@ -64,14 +64,14 @@ nnoremap <leader>pv :NERDTreeFind<bar> :vertical resize 45<CR>
 
 
 "----------------------------------------------------------------------------------------
-" Easy motion       
+" Easy motion
 "----------------------------------------------------------------------------------------
 
 map <Leader><Leader> <Plug>(easymotion-prefix)
 
 
 "----------------------------------------------------------------------------------------
-" Terminal          
+" Terminal
 "----------------------------------------------------------------------------------------
 
 nnoremap <Leader>tt :tabnew \| term<CR>
@@ -92,3 +92,14 @@ nnoremap <leader>fd <cmd>Telescope file_browser<cr>
 nnoremap <leader>gs <cmd>Telescope grep_string<cr>
 
 
+"----------------------------------------------------------------------------------------
+" Lsp
+"----------------------------------------------------------------------------------------
+
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+inoremap <silent><expr> <CR> pumvisible() ? compe#confirm('<CR>') : "<CR>"
+inoremap <silent><expr> <C-e> compe#close('<C-e>')
+inoremap <silent><expr> <C-f> compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d> compe#scroll({ 'delta': -4 })

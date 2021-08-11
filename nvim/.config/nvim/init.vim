@@ -1,7 +1,7 @@
 "----------------------------------------------------------------------------------------
-" Plugins loading 
+" Plugins loading
 "----------------------------------------------------------------------------------------
- 
+
 call plug#begin('~/.vim/plugged')
 
     " Telescope
@@ -41,7 +41,7 @@ call plug#begin('~/.vim/plugged')
     " Undotree
     Plug 'mbbill/undotree'
 
-    " NERDTree  
+    " NERDTree
     Plug 'preservim/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -53,7 +53,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'wellle/targets.vim'
 
     " Snippets godies
-    Plug 'honza/vim-snippets'
+    " Plug 'honza/vim-snippets'
+    Plug 'L3MON4D3/LuaSnip'
+    Plug 'rafamadriz/friendly-snippets'
 
     " Autocompletion
     Plug 'hrsh7th/nvim-compe'
@@ -61,10 +63,12 @@ call plug#begin('~/.vim/plugged')
     " LSP
     Plug 'neovim/nvim-lspconfig'
 
-    " Formatting 
+    " Formatting
     Plug 'sbdchd/neoformat'
 
     Plug 'itchyny/lightline.vim'
     Plug 'mhinz/vim-startify'
 
 call plug#end()
+
+
