@@ -1,12 +1,6 @@
+REPO="https://github.com/erikcek/nvim.git"
 
-# Regular Colors
-Red='\033[0;31m'          # Red
-Green='\033[0;32m'        # Green
-NC='\033[0m'
-
-REPO="https://gitlab.com/erikcek/nvim.git"
-
-echo "${Green}Installing neovim...${NC}"
+echo "Installing neovim..."
 
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -14,36 +8,36 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     which -s brew
     if [[ $? != 0 ]] ; then
         # Install Homebrew
-        echo "${Green}Installing brew...${NC}"
+        echo "Installing brew..."
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     else
-        echo "${Green}Updating brew...${NC}"
+        echo "Updating brew..."
         brew update
     fi
 
     which -s npm
     if [[ $? != 0 ]] ; then
         # Install Npm
-        echo "${Green}Installing npm...${NC}"
+        echo "Installing npm..."
         brew install node
     else
-        echo "${Green}Npm exists. Skiping...${NC}"
+        echo "Npm exists. Skiping..."
     fi
 
     which -s nvim
     if [[ $? != 0 ]] ; then
-        echo "${Green}Installing neovim${NC}"
+        echo "Installing neovim"
         brew install neovim
     else
-        echo "${Green}Neovim exists. Skiping...${NC}"
+        echo "Neovim exists. Skiping..."
     fi
 
     DIR='${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim'
     if [ -d "$DIR" ]; then
         # Take action if $DIR exists. #
-        echo "${Green}Vim-plug exists. Skiping...${NC}"
+        echo "Vim-plug exists. Skiping..."
     else
-        echo "${Green}Installing Vim-plug${NC}"
+        echo "Installing Vim-plug"
         sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     fi
@@ -53,27 +47,27 @@ else
     which -s npm
     if [[ $? != 0 ]] ; then
         # Install Npm
-        echo "${Green}Installing node and npm...${NC}"
+        echo "Installing node and npm..."
         sudo apt install nodejs
         sudo apt install npm
     else
-        echo "${Green}Npm exists. Skiping...${NC}"
+        echo "Npm exists. Skiping..."
     fi
 
     which -s nvim
     if [[ $? != 0 ]] ; then
-        echo "${Green}Installing neovim${NC}"
+        echo "Installing neovim"
         sudo apt install neovim
     else
-        echo "${Green}Neovim exists. Skiping...${NC}"
+        echo "Neovim exists. Skiping..."
     fi
 
     DIR='${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim'
     if [ -d "$DIR" ]; then
         # Take action if $DIR exists. #
-        echo "${Green}Vim-plug exists. Skiping...${NC}"
+        echo "Vim-plug exists. Skiping..."
     else
-        echo "${Green}Installing Vim-plug${NC}"
+        echo "Installing Vim-plug"
         sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     fi
@@ -83,10 +77,10 @@ fi
 DIR='~/nvim'
 if [ -d "$DIR" ]; then
     # Take action if $DIR exists. #
-    echo "${RED}Direstory nvim already exists in HOME. Unable setup neovim from git. Exiting...${NC}"
+    echo "Direstory nvim already exists in HOME. Unable setup neovim from git. Exiting..."
     exit 1
 else
-    echo "${Green}${Green}Cloning nvim repository...${NC}"
+    echo "${Green}Cloning nvim repository..."
     git clone $REPO ~/nvim
     sh ~/nvim/install
     sh ~/nvim/install_lsp_servers.sh
