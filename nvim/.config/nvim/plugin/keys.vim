@@ -52,6 +52,8 @@ nnoremap <S-j> :wincmd j<CR>
 nnoremap <S-k> :wincmd k<CR>
 nnoremap <S-l> :wincmd l<CR>
 
+" Maximizer
+nnoremap <leader>m :MaximizerToggle<cr>
 
 "----------------------------------------------------------------------------------------
 " NERDTree
@@ -103,3 +105,6 @@ inoremap <silent><expr> <CR> pumvisible() ? compe#confirm('<CR>') : "<CR>"
 inoremap <silent><expr> <C-e> compe#close('<C-e>')
 inoremap <silent><expr> <C-f> compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d> compe#scroll({ 'delta': -4 })
+
+nnoremap <silent> ff    <cmd>lua vim.lsp.buf.formatting()<CR>
+
