@@ -68,6 +68,7 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'itchyny/lightline.vim'
     Plug 'mhinz/vim-startify'
+    Plug 'szw/vim-maximizer'
 
 call plug#end()
 

@@ -47,10 +47,12 @@ nnoremap <leader>e :q<CR>
 nnoremap <leader>q :q!<CR>
 
 " Panel switching
-nnoremap <S-h> :wincmd h<CR>
-nnoremap <S-j> :wincmd j<CR>
+nnoremap <S-h> :wincmd h<cr>
+nnoremap <s-j> :wincmd j<CR>
 nnoremap <S-k> :wincmd k<CR>
 nnoremap <S-l> :wincmd l<CR>
+nnoremap <S-w> <C-W>
+
 
 " Maximizer
 nnoremap <leader>m :MaximizerToggle<cr>
@@ -76,6 +78,7 @@ map <Leader><Leader> <Plug>(easymotion-prefix)
 " Terminal
 "----------------------------------------------------------------------------------------
 
+nnoremap <Leader>/t :botright 8split term://zsh<CR>
 nnoremap <Leader>tt :tabnew \| term<CR>
 
 nnoremap <C-n> :noh<CR>
