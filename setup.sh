@@ -19,7 +19,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     if [[ $? != 0 ]] ; then
         # Install Npm
         echo "Installing npm..."
-        brew install node
+        sudo brew install node
     else
         echo "Npm exists. Skiping..."
     fi
@@ -27,7 +27,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     which -s nvim
     if [[ $? != 0 ]] ; then
         echo "Installing neovim"
-        brew install neovim
+        sudo brew install neovim
     else
         echo "Neovim exists. Skiping..."
     fi
