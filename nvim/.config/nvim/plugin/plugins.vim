@@ -77,10 +77,16 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 lua << EOF
 require('telescope').setup{
     defaults = {
-        prompt_prefix = "🔍 ",
         file_ignore_patterns = { "node_modules", ".git" }
     }
 }
 EOF
 
+
+"----------------------------------------------------------------------------------------
+" Neoterm
+"----------------------------------------------------------------------------------------
+
+" Added help for all neoterm commands
+silent! helptags ALL
 

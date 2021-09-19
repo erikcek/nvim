@@ -62,6 +62,7 @@ call plug#begin('~/.vim/plugged')
 
     " LSP
     Plug 'neovim/nvim-lspconfig'
+    Plug 'kabouzeid/nvim-lspinstall'
 
     " Formatting
     Plug 'sbdchd/neoformat'
@@ -69,6 +70,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'itchyny/lightline.vim'
     Plug 'mhinz/vim-startify'
     Plug 'szw/vim-maximizer'
+    Plug 'kassio/neoterm'
 
 call plug#end()
 
