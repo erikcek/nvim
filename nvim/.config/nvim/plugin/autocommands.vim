@@ -6,6 +6,7 @@ augroup neoformat
     autocmd BufWritePre *.ts Neoformat prettier
     autocmd BufWritePre *.jsx Neoformat prettier
     autocmd BufWritePre *.tsx Neoformat prettier
+    autocmd BufWritePre *.py Neoformat autopep8
     " autocmd BufWritePre * undojoin | Neoformat
 augroup end
 

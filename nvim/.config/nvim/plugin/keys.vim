@@ -111,3 +111,4 @@ inoremap <silent><expr> <C-d> compe#scroll({ 'delta': -4 })
 
 nnoremap <silent> ff    <cmd>lua vim.lsp.buf.formatting()<CR>
 
+nnoremap <leader>res <cmd>res 8<cr>
