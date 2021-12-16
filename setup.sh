@@ -19,7 +19,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     if [[ $? != 0 ]] ; then
         # Install Npm
         echo "Installing npm..."
-        brew install node
+        sudo brew install node
     else
         echo "Npm exists. Skiping..."
     fi
@@ -27,7 +27,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     which -s nvim
     if [[ $? != 0 ]] ; then
         echo "Installing neovim"
-        brew install neovim
+        sudo brew install neovim
     else
         echo "Neovim exists. Skiping..."
     fi
@@ -48,8 +48,8 @@ else
     if [[ $? != 0 ]] ; then
         # Install Npm
         echo "Installing node and npm..."
-        sudo apt install nodejs
-        sudo apt install npm
+         apt install nodejs
+         apt install npm
     else
         echo "Npm exists. Skiping..."
     fi
@@ -57,7 +57,7 @@ else
     which -s nvim
     if [[ $? != 0 ]] ; then
         echo "Installing neovim"
-        sudo apt install neovim
+         apt install neovim
     else
         echo "Neovim exists. Skiping..."
     fi
