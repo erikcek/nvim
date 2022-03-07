@@ -75,11 +75,28 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 "----------------------------------------------------------------------------------------
 
 lua << EOF
+local actions = require "telescope.actions"
 require('telescope').setup{
     defaults = {
         file_ignore_patterns = { "node_modules", ".git" }
-    }
+    },
+    extensions = {
+        file_browser = {
+          theme = "ivy",
+          mappings = {
+            ["i"] = {
+              -- your custom insert mode mappings
+            },
+            ["n"] = {
+              -- your custom normal mode mappings
+              ["<leader-e"] = actions.close,
+              ["o"] = actions.select_default
+            },
+          },
+        },
+      },
 }
+require("telescope").load_extension "file_browser"
 EOF
 
 
