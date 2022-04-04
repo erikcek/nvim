@@ -78,7 +78,18 @@ lua << EOF
 local actions = require "telescope.actions"
 require('telescope').setup{
     defaults = {
-        file_ignore_patterns = { "node_modules", ".git" }
+        file_ignore_patterns = { "node_modules", ".git" },
+        theme = "ivy",
+        vimgrep_arguments = {
+          'rg',
+          '--color=never',
+          '--no-heading',
+          '--with-filename',
+          '--line-number',
+          '--column',
+          '--smart-case',
+          '-uu' -- **This is the added flag**
+        }
     },
     extensions = {
         file_browser = {
