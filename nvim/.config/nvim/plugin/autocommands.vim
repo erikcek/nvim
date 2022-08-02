@@ -1,14 +1,12 @@
 " Auto formatting
-" augroup neoformat
-"     autocmd!
-"     autocmd BufWritePre * %s/\s\+$//e
-"     autocmd BufWritePre *.js Neoformat prettier
-"     autocmd BufWritePre *.ts Neoformat prettier
-"     autocmd BufWritePre *.jsx Neoformat prettier
-"     autocmd BufWritePre *.tsx Neoformat prettier
-"     autocmd BufWritePre *.py Neoformat autopep8
-"     " autocmd BufWritePre * undojoin | Neoformat
-" augroup end
+augroup neoformat
+    autocmd!
+    autocmd BufWritePre * %s/\s\+$//e
+    autocmd BufWritePre *.js Neoformat prettier
+    autocmd BufWritePre *.ts Neoformat prettier
+    autocmd BufWritePre *.jsx Neoformat prettier
+    autocmd BufWritePre *.tsx Neoformat prettier
+augroup end
 
 " autocmd BufWritePre * lua vim.lsp.buf.formatting()
 

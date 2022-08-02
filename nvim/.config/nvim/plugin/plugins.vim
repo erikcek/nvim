@@ -118,3 +118,5 @@ EOF
 " Added help for all neoterm commands
 silent! helptags ALL
 
+let g:vimspector_base_dir='/Users/erikcek/.vim/plugged/vimspector'
+

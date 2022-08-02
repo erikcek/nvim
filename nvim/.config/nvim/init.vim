@@ -4,6 +4,27 @@
 
 call plug#begin('~/.vim/plugged')
 
+    " LSP
+    Plug 'neovim/nvim-lspconfig'
+    " Language server installer
+    Plug 'williamboman/nvim-lsp-installer'
+
+    " " Autocompletion
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    " Other completion sources
+    Plug 'hrsh7th/cmp-path'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-cmdline'
+
+    " Snippets
+    Plug 'hrsh7th/cmp-vsnip'
+    Plug 'hrsh7th/vim-vsnip'
+    Plug 'hrsh7th/vim-vsnip-integ'
+
+    " Schemastore support for json lsp
+    Plug 'b0o/schemastore.nvim'
+
     " Telescope
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
@@ -17,16 +38,14 @@ call plug#begin('~/.vim/plugged')
     " CSS colors
     Plug 'ap/vim-css-color'
 
-    " Easymotion
-    Plug 'easymotion/vim-easymotion'
+    " Lightspeed
+    Plug 'ggandor/lightspeed.nvim'
 
     " Gitgutter
     Plug 'airblade/vim-gitgutter'
 
     " Illuminate
     Plug 'RRethy/vim-illuminate'
-
-    Plug 'tpope/vim-surround'
 
     " Status line
     Plug 'vim-airline/vim-airline'
@@ -50,19 +69,7 @@ call plug#begin('~/.vim/plugged')
     " Icons
     Plug 'ryanoasis/vim-devicons'
 
-    " Targets on steroids
-    Plug 'wellle/targets.vim'
-
-    " Snippets godies
-    " Plug 'honza/vim-snippets'
-    Plug 'L3MON4D3/LuaSnip'
     Plug 'rafamadriz/friendly-snippets'
-
-    " Autocompletion
-    Plug 'hrsh7th/nvim-compe'
-
-    " LSP
-    Plug 'neovim/nvim-lspconfig'
 
     " Formatting
     Plug 'sbdchd/neoformat'
@@ -71,6 +78,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'mhinz/vim-startify'
     Plug 'szw/vim-maximizer'
     Plug 'kassio/neoterm'
+
+    " debugger
+    Plug 'puremourning/vimspector'
 
 call plug#end()
 
